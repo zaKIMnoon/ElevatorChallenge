@@ -46,17 +46,21 @@ cd ElevatorChallenge
 windows (Command Line/Powershell)
 git clone https://github.com/zaKIMnoon/ElevatorChallenge.git
 cd ElevatorChallenge
+```
+
+---
 
 ### 2. Run the project
-dotnet run --project ElevatorChallenge
+```bash
+dotnet run --project ElevatorManagerSystem
+```
 
 ### 3. Console Usage
-Enter command (request/shutdown)
-request 5 8   # Request elevator to 5th floor with 8 people waiting
-shutdown      # Stop the application
+ - Enter command (request/shutdown)
+ - request 5 8   # Request elevator to 5th floor with 8 people waiting
+ - shutdown      # Stop the application
 
 ## ▶️ Running the Tests
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/zaKIMnoon/ElevatorChallenge.git
-cd ElevatorChallenge
+dotnet test
