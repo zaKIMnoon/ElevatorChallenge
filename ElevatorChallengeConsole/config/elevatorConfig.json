@@ -1,0 +1,18 @@
+{
+  "BuildingName": "Skyline Tower",
+  "NumberOfFloors": 50,
+  "ElevatorList": [
+    {
+      "Name": "E1",
+      "Capacity": 15,
+      "SpeedPerSecond": 3.0,
+      "CurrentFloor": 1
+    },
+    {
+      "Name": "E2",
+      "Capacity": 10,
+      "SpeedPerSecond": 2.5,
+      "CurrentFloor": 1
+    }
+  ]
+}
