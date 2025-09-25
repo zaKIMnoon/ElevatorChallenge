@@ -3,6 +3,10 @@ using ElevatorChallengeLib.Models.Enums;
 
 namespace ElevatorChallengeLib.Managers
 {
+    /// <summary>
+    /// Manages all elevators in the system, assigning them to requests
+    /// based on availability, proximity, and direction.
+    /// </summary>
     public class ElevatorManager
     {
         private List<Elevator> Elevators;
@@ -11,12 +15,22 @@ namespace ElevatorChallengeLib.Managers
         private bool _running = true;
         private int MaxFloors;
 
+        /// <summary>
+        /// Initializes a new ElevatorManager with a list of elevators and maximum floor limit.
+        /// </summary>
+        /// <param name="elevators">The elevators managed by the system.</param>
+        /// <param name="maxFloors">The maximum number of floors in the building.</param>
         public ElevatorManager(List<Elevator> elevators, int maxFloors)
         {
             Elevators = elevators;
             MaxFloors = maxFloors;
         }
 
+        /// <summary>
+        /// Queues a new request for an elevator from a specific floor and number of people.
+        /// </summary>
+        /// <param name="floor">The floor number where the request is made.</param>
+        /// <param name="peopleCount">The number of people requesting the elevator.</param>
         public void RequestElevator(int floor, int peopleCount)
         {
 
@@ -41,11 +55,20 @@ namespace ElevatorChallengeLib.Managers
 
             Task.Run(() => ProcessRequests());
         }
+
+        /// <summary>
+        /// Stops the elevator system and halts further processing.
+        /// </summary>
         public void Stop()
         {
             _running = false;
             Console.WriteLine("Elevator system shutting down...");
         }
+
+        /// <summary>
+        /// Processes pending requests by assigning elevators to them
+        /// based on direction, availability, and proximity.
+        /// </summary>
         private void ProcessRequests()
         {
             while (_running)
@@ -86,6 +109,13 @@ namespace ElevatorChallengeLib.Managers
                 }
             }
         }
+
+        /// <summary>
+        /// Handles an elevator request, accounting for capacity and returning
+        /// multiple times if necessary until all waiting passengers are picked up.
+        /// </summary>
+        /// <param name="elevator">The elevator assigned to the request.</param>
+        /// <param name="request">The request to handle.</param>
         private void HandleRequest(Elevator elevator, FloorRequest request)
         {
             Task.Run(async () =>
